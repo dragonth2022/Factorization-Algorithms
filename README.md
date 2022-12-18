@@ -1,5 +1,5 @@
 # Factorization-Algorithms
-Integer factorization is an important problem. The hardness of this problem is the mathematical foundation that RSA-encryption rests on. As such, these 3 algorithms are considered to be "enemies of RSA". In particular, security standards for RSA are currently determined by how fast Generic Number Field Sieve runs on the latest hardware.
+Integer factorization is an important problem. The hardness of this problem is the mathematical foundation that RSA-encryption rests on. As such, these 3 algorithms are considered to be "enemies of RSA". In particular, security standards for RSA are currently determined by how fast these algorithms run on the latest hardware.
 
 In this project, I aim to implement the 3 (4?) best integer factorization algorithms currently known, as I learn them. They are (in the order to be implemented):
 
