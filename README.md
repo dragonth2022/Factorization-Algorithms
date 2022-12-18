@@ -21,4 +21,5 @@ To compare performance, I have also added a naive factorization algorithm, which
 Try factorizing n = 100100310010033003009 to see the difference:
 
 lenstra(100100310010033003009 , 2000000 , 5)
+
 naive_factorize(100100310010033003009)
