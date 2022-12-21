@@ -16,7 +16,7 @@ Rational, Quadratic, and General Number Field Sieves are in the same family of f
 
 Quadratic Sieve lies somewhere in the middle. Due to differences in the amount of set-up required, it is the fastest algorithm for numbers with prime factors between 10^60 and 10^100, despite having a slightly higher complexity than the General Number Field Sieve.
 
-To compare performance, I have also added a naive factorization algorithm, which simply tries to divide n by all primes less than sqrt(n).
+To compare performance, I have also added a naive factorization algorithm, which simply tries to divide n by all integers less than sqrt(n).
 
 Try factorizing n = 100100310010033003009 to see the difference:
 
