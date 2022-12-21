@@ -3,7 +3,7 @@ Integer factorization is an important problem. The hardness of this problem is t
 
 In this project, I aim to implement the 3 (4?) best integer factorization algorithms currently known, as I learn them. They are (in the order to be implemented):
 
-1. Lenstra Elliptic Curve Factorization (main prototype done, optimizations, extensions, and simplifications not yet done)
+1. Lenstra Elliptic Curve Factorization (main prototype done. To do: optimizations, extensions, and simplifications)
 2. Quadratic Sieve
 3. General Number Field Sieve
 4. (?) Rational Sieve
