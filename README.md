@@ -16,7 +16,7 @@ The base version of Lenstra has been implemented. I aim to implement both 'Polla
 
 Rational, Quadratic, and General Number Field Sieves are in the same family of factoring algorithms that uses Algebraic Number Theory. Each is a generalization/extension of the previous, with Rational Sieve being the easiest to understand (but the slowest) and General Number Field Sieve being the hardest (and also the fastest), involving a vast amount of graduate level mathematics.
 
-Quadratic Sieve lies somewhere in the middle. Due to differences in the amount of set-up required, it is the fastest algorithm for numbers with prime factors between 10^60 and 10^100, despite having a slightly higher complexity than the General Number Field Sieve.
+Quadratic Sieve lies somewhere in the middle. Due to differences in the amount of set-up required, it is the fastest algorithm for numbers with prime factors between 10^60 and 10^100, despite having a slightly higher time complexity than the General Number Field Sieve.
 
 To compare performance, I have also added a naive factorization algorithm, which simply tries to divide n by all integers less than sqrt(n).
 
