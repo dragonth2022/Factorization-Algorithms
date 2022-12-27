@@ -3,10 +3,10 @@ Integer factorization is an important problem. The hardness of this problem is t
 
 In this project, I aim to implement the 3 (4?) best integer factorization algorithms currently known, as I learn them. They are (in the order to be implemented):
 
-1. Lenstra Elliptic Curve Factorization  (main idea implemented. To do: optimizations (projective coordinates), extensions (stage 2), and simplifications)
+1. Lenstra Elliptic Curve Factorization  (main idea implemented 18 Dec 2022. To do: optimizations (projective coordinates), extensions (stage 2), and simplifications)
 2. Quadratic Sieve 
 3. General Number Field Sieve
-4. (?) Rational Sieve (main idea implemented. To do: optimize using gaussian elimination for finding relations, instead of iterating over all possible combinations)
+4. (?) Rational Sieve (main idea implemented 26 Dec 2022. To do: optimize using gaussian elimination for finding relations, instead of iterating over all possible combinations)
 
 At time of writing, I could not find any implementation of the abovementioned algorithms together with an accessible explanation that walks the reader through the code. This project aims to change that.
 
