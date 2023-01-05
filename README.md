@@ -28,6 +28,7 @@ naive_factorize(100100310010033003009)
 
 
 Changelog:
+
 5 Jan:
 1. Added quadratic sieve.
 2. Updated Lenstras:
