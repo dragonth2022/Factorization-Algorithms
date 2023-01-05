@@ -25,3 +25,12 @@ Try factorizing n = 100100310010033003009 to see the difference:
 lenstra(100100310010033003009 , 2000000 , 5)
 
 naive_factorize(100100310010033003009)
+
+
+Changelog:
+5 Jan:
+1. Added quadratic sieve.
+2. Updated Lenstras:
+  2a. Only returns prime factors now. Performs Miller Rabin Primality Test on any potential factors. If primaltytest returns false, recursively call Lenstra again.
+  2b. Fixed a bug that caused a crash when point addition reaches point at infinity for both Z/pZ and Z/qZ simultaneously, when implicitly working in the finite       fields.
+  2c. Now returns -1 when a factor was not found within the specified limit of work allowed.
