@@ -4,8 +4,8 @@ Integer factorization is an important problem. The hardness of this problem is t
 In this project, I aim to implement the 3 (4?) best integer factorization algorithms currently known, as I learn them. They are (in the order to be implemented):
 
 1. Lenstra Elliptic Curve Factorization  (main idea implemented 18 Dec 2022. To do: optimizations (change coordinates from affine to projective), extensions (stage 2), and simplifications)
-2. Quadratic Sieve (working on it now)  
-3. General Number Field Sieve (not yet)
+2. Quadratic Sieve
+3. General Number Field Sieve (working on it now)
 4. (?) Rational Sieve (main idea implemented 26 Dec 2022. To do: optimize using gaussian elimination for finding relations, instead of iterating over all possible combinations)
 
 At time of writing, I could not find any implementation of the abovementioned algorithms together with an accessible explanation that walks the reader through the code. This project aims to change that.
@@ -30,7 +30,14 @@ naive_factorize(100100310010033003009)
 Changelog:
 
 5 Jan:
-1. Added quadratic sieve.
+1. Added Quadratic Sieve.
 2. Updated Lenstras: Only returns prime factors now. Performs Miller Rabin Primality Test on any potential factors. If primaltytest returns false, recursively call Lenstra again.
 3. Updated Lenstras: Fixed a bug that caused a crash when point addition reaches point at infinity for both Z/pZ and Z/qZ simultaneously, when implicitly working in the finite fields.
 4. Updated Lenstras: Now returns -1 when a factor was not found within the specified limit of work allowed.
+
+
+26 Dec:
+1. Added Rational Sieve.
+
+18 Dec:
+1. Added Lenstra Elliptic Curve Method.
