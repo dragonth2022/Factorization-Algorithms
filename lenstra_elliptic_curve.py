@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
 """
+Created on Mon Jan  2 12:07:32 2023
+
+@author: Zhao Yufan
+"""
+
+# -*- coding: utf-8 -*-
+"""
 Created on Fri Dec 16 16:35:13 2022
 
 @author: Zhao Yufan
@@ -37,7 +44,7 @@ special properties are satisfied) :
         -Mersenne Numbers are numbers of the form 2**k - 1 for some integer k
     
     4. Lenstra's Elliptic Curve Factorization Algorithm
-        -Favours medium sized primes between 10**20 and 10**40
+        -Favours medium sized primes of up to 60 digits (180-210 bits)
         -We are implementing this algorithm right now.
 """
 
@@ -397,6 +404,7 @@ detail (Following the code)
 """
 from random import randint
 from math import gcd
+from MillerRabinPrimalityTest import MillerRabin
 
 def lenstra(n , bound , curves):
     assert n%2 != 0 , 'please first factor out the prime 2'
@@ -405,6 +413,8 @@ def lenstra(n , bound , curves):
     curves_tried = 0
     
     guess = n
+    if guess == 1:
+        return -1
     while guess == n and discriminant == 0:
         #initialize with a random point (x,y)
         #find a curve y**2 + x**3 + a*x + b that (x,y) lies on
@@ -434,7 +444,10 @@ def lenstra(n , bound , curves):
             guess = gcd(d , n)
             if guess != 1 and guess != n:
                 output = gcd(guess,n)
-                return output
+                if MillerRabin(output) is True:
+                    return output
+                else:
+                    return lenstra(output , bound , curves)
             
             #Try getting lucky with starting point p
             xp , yp = p[0] , p[1]
@@ -442,37 +455,57 @@ def lenstra(n , bound , curves):
                 slope_at_p = (((3*((xp**2)%n))%n + a)%n) * mod_inverse( (2*yp)%n , n)
             except ValueError:
                 output = gcd((2*yp)%n , n)
-                return output
+                
+                if MillerRabin(output) is True:
+                    return output
+                else:
+                    return lenstra(output , bound , curves)
+                
+            except TypeError:
+                continue
             
             
             #If we reach here, we are not lucky
             #prime_list = primes_up_to(bound)
             
             #for item in prime_list:
-            for item in range(2,bound):
-                
-                #before proceeding, check if current point produces factor
-                try:
-                    slope_at_p = (((3*((xp**2)%n))%n + a)%n) * mod_inverse( (2*yp)%n , n)
-                except ValueError:
-                    output = gcd((2*yp)%n , n)
-                    return output
-                
-                #if it does not, update point
-                success , value , new_point = elliptic_multiply(p , item , a , b , n)
-                if success == -1:
-                    output = gcd(value,n)
-                    return output
+            primes_to_check = primes_up_to(bound)
+            for count in range(10):
+                for item in primes_to_check:
                     
-                p = new_point
-                xp , yp = p[0] , p[1]
-            
-            
-    #If we reach here, we failed to find a factor with specified bounds and curves
-    return 'Failed to find factor with specified smoothness bound and max curves tried'
-
+                    #before proceeding, check if current point produces factor
+                    try:
+                        slope_at_p = (((3*((xp**2)%n))%n + a)%n) * mod_inverse( (2*yp)%n , n)
+                    except ValueError:
+                        output = gcd((2*yp)%n , n)
+                        
+                        if MillerRabin(output) is True:
+                            return output
+                        else:
+                            return lenstra(output , bound , curves)
+                        
+                    except TypeError:
+                        break
+    
+                    
+                    #if it does not, update point
+                    success , value , new_point = elliptic_multiply(p , item , a , b , n)
+                    if success == -1:
+                        output = gcd(value,n)
+                        
+                        if MillerRabin(output) is True:
+                            return output
+                        else:
+                            return lenstra(output , bound , curves)
+                        
+                        
+                    p = new_point
+                    xp , yp = p[0] , p[1]
                 
-
+                
+        #If we reach here, we failed to find a factor with specified bounds and curves
+        #return 'Failed to find factor with specified smoothness bound and max curves tried'
+        return -1
 
                 
 
